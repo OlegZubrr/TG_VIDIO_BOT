@@ -9,12 +9,11 @@ import url_storage as storage
 
 router = Router()
 
-
 @router.message(CommandStart())
 async def cmd_start(message:Message):
     await message.reply("Hello! send me a link to a video from Tiktok or YouTube and I will help you download it")
     
-@router.message(F.text.contains("tiktok.com") | F.text.contains("youtube.com") | F.text.contains("youtu.be"))
+@router.message(F.text.contains("tiktok.com") | F.text.contains("youtube.com") | F.text.contains("youtu.be") | F.text.contains("instagram.com"))
 async def video_request(message:Message):
     url = message.text.strip()
     url_id = hf.generate_url_id(url)
